@@ -6,7 +6,7 @@ export  function Navigation() {
     <nav>
         <ul>
             <li>
-                <Link to="/favourite">Favourite</Link>
+                <Link to="/favourites">Favourite</Link>
             </li>
             <li>
                 <Link to="/restaurants">restaurants</Link>

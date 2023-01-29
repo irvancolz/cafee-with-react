@@ -1,5 +1,5 @@
 import './App.css';
-import { lazy } from 'react';
+import { lazy, useRef } from 'react';
 import { Loading, Navigation } from './components'
 import { Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
@@ -12,13 +12,15 @@ const RestaurantsPages = lazy(() => import("./pages/restaurants"));
 
 function App() {
 
+  const mainRef = useRef(null)
+
   return (
     <Suspense fallback={<Loading />}>
-      <a href='#App' className='skip-to-content'>Skip to Content</a>
+      <a href='#App' onClick={() => console.log(mainRef)} className='skip-to-content'>Skip to Content</a>
       <header>
         <Navigation />
       </header>
-      <main className="App" id='App'>
+      <main ref={mainRef} tabIndex="0" className="App" id='App'>
 
         <Routes>
           <Route path='/' element={<HomePages />} />
