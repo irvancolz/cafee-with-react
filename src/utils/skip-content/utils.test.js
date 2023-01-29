@@ -1,4 +1,4 @@
-import { SkipContent } from "./skip-to-content";
+import { skipContent } from "./skip-to-content";
 
 describe("test skip to content function", () => {
   const createTemplate = () => {
@@ -21,7 +21,7 @@ describe("test skip to content function", () => {
     const button = document.getElementById("button");
     const target = document.getElementById("target");
 
-    SkipContent({
+    skipContent.init({
       skipTo: target,
       trigger: button,
     });
@@ -36,7 +36,7 @@ describe("test skip to content function", () => {
     const button = document.getElementById("button");
     const target = document.querySelector("main");
 
-    SkipContent({
+    skipContent.init({
       skipTo: undefined,
       trigger: button,
     });
@@ -51,15 +51,17 @@ describe("test skip to content function", () => {
     const button = document.getElementById("button");
     const target = document.querySelector("main");
 
-    SkipContent({
+    skipContent.init({
       skipTo: target,
       trigger: undefined,
     });
 
     button.dispatchEvent(new Event("click"));
-    expect( () => {  SkipContent({
+    expect(() => {
+      skipContent.init({
         skipTo: target,
         trigger: undefined,
-      })}).toThrow()
+      });
+    }).toThrow();
   });
 });
